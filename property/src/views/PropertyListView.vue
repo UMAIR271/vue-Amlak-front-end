@@ -69,7 +69,6 @@
           <button @click="myMethod" class="button3">FIND</button>
         </div>
       </div>
-      <div>{{ $store.state.data.check_Purpose_Type }}</div>
       <div class="map_views">
         <button class="button5">
           <i class="fa fa-filter" style="font-size: 17px; margin-right: 5px"></i
@@ -3668,8 +3667,8 @@ export default {
         this.rent = response.data.results;
         this.nextPage = response.data.next;
         try {
-          const response = await axios.get(this.nextPage);
-          this.rentnext = response.data.results;
+          const response1 = await axios.get(this.nextPage);
+          this.rent = [...response.data.results, ...response1.data.results];
           console.log(this.rentnext);
         } catch (error) {
           console.error(error);
